@@ -38,29 +38,18 @@ let marker = 2;
 
 newImages.forEach((imageTitleText, index) => {
     let markup= 
-        `
-        <div class="col-12">
-            <div class="card">
-
-                <div class="card-img">
-                    <img  class="img-fluid ${index === marker ? 'active' : ''} " src="./assets/${imageTitleText.image}" alt="">
-                </div>
-
-                <div class="card-img-overlay position-absolute bottom-0">
-                    <h4 class="${index === marker ? 'active' : ''}">${imageTitleText.title}</h4>
-                    <p class="${index === marker ? 'active' : ''} ">${imageTitleText.text}</p>
-                </div>
-
-                <button id="button_up">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </button>
-                <button id="button_down">
-                    <i class="fa-solid fa-arrow-down"></i>
-                </button>
-            </div>
+        
+        `<div class="card-img">
+            <img  class="img-fluid ${index === marker ? 'active' : ''} " src="./assets/${imageTitleText.image}" alt="">
         </div>
-        `;
-    document.querySelector('.row').innerHTML+=markup;    
+
+        <div class="card-img-overlay position-absolute bottom-0">
+            <h4 class="${index === marker ? 'active' : ''}">${imageTitleText.title}</h4>
+            <p class="${index === marker ? 'active' : ''} ">${imageTitleText.text}</p>
+        </div>`
+        ;
+
+    document.querySelector('.card').insertAdjacentHTML('afterbegin', markup);  
 });
 
 /* for (let i = 0 ; i < album.length ; i++){
@@ -79,21 +68,17 @@ const previousButton = document.getElementById('button_up');
 previousButton.addEventListener('click' , function() {
 
     console.log('arrowUP');
-
     const currentImage = allImages[marker];
-    console.log(currentImage + '   84');
     currentImage.classList.remove('active');
-
     const currentTitle = allTitles[marker];
     currentTitle.classList.remove('active');
-
     const currentText = allText[marker];
     currentText.classList.remove('active'); 
     marker --;
 
     if (marker < 0){
         marker = newImages.length - 1;
-    }
+    };
 
     const prevTitle = allTitles[marker];
     prevTitle.classList.add('active');
@@ -103,21 +88,29 @@ previousButton.addEventListener('click' , function() {
     prevImage.classList.add('active');
 })
 
-//displau the previous image
+//display the previous image
 const nextButton = document.getElementById('button_down');
 nextButton.addEventListener('click' , function() {
 
     console.log('arrowDOWN');    
-    const currentSlide = allImages[marker];
-    currentSlide.classList.remove('active');
+    const currentImage = allImages[marker];
+    currentImage.classList.remove('active');
+    const currentTitle = allTitles[marker];
+    currentTitle.classList.remove('active');
+    const currentText = allText[marker];
+    currentText.classList.remove('active');
 
     marker ++;
     if(marker > newImages.length - 1){
         marker = 0;
-    }
+    };
 
-    const nextImage = allImages[marker];
-    nextImage.classList.add('active');    
+    const prevTitle = allTitles[marker];
+    prevTitle.classList.add('active');
+    const prevText = allText[marker];
+    prevText.classList.add('active');
+    const prevImage = allImages[marker];
+    prevImage.classList.add('active');    
 })
 
 

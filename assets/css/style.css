@@ -11,10 +11,18 @@
     transform: translate(-50%);
     bottom: 0;
 } 
-#contenitore > img:not(.active) {
+.card>.card-img>img:not(.active),
+.card>.card-img-overlay>h4:not(.active),
+.card>.card-img-overlay>p:not(.active)
+{
     display: none;
 }
+
 .card-img-overlay{top: auto!important;}
+img{
+    max-height: 40rem;
+    
+}
 h4{display: inline-block;}
 h4 , p{
     background-color: rgba(0, 0, 0, 0.735);

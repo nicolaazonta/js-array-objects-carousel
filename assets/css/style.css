@@ -19,10 +19,7 @@
 }
 
 .card-img-overlay{top: auto!important;}
-img{
-    max-height: 40rem;
-    
-}
+
 h4{display: inline-block;}
 h4 , p{
     background-color: rgba(0, 0, 0, 0.735);

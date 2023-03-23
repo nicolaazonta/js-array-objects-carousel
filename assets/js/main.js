@@ -60,7 +60,7 @@ newImages.forEach((imageTitleText, index) => {
             </div>
         </div>
         `;
-    document.querySelector('.row').innerHTML=markup;    
+    document.querySelector('.row').innerHTML+=markup;    
 });
 
 /* for (let i = 0 ; i < album.length ; i++){
@@ -70,7 +70,7 @@ newImages.forEach((imageTitleText, index) => {
 } */
 
 
-const allImages = document.querySelectorAll('.card > img');
+const allImages = document.querySelectorAll('.card-img > img');
 const allTitles = document.querySelectorAll('.card > .card-img-overlay > h4');
 const allText = document.querySelectorAll('.card > .card-img-overlay > p');
 

@@ -14,3 +14,11 @@
 #contenitore > img:not(.active) {
     display: none;
 }
+.card-img-overlay{top: auto!important;}
+h4{display: inline-block;}
+h4 , p{
+    background-color: rgba(0, 0, 0, 0.735);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+}

@@ -32,7 +32,6 @@ const newImages = [
 ];
 
 
-let imagesEl = document.getElementById('contenitore');
 let marker = 2;
 
 //display images into the dom
@@ -48,8 +47,8 @@ newImages.forEach((imageTitleText, index) => {
                 </div>
 
                 <div class="card-img-overlay position-absolute bottom-0">
-                    <h4 class="">${imageTitleText.title}</h4>
-                    <p>${imageTitleText.text}</p>
+                    <h4 class="${index === marker ? 'active' : ''}">${imageTitleText.title}</h4>
+                    <p class="${index === marker ? 'active' : ''} ">${imageTitleText.text}</p>
                 </div>
 
                 <button id="button_up">
@@ -71,20 +70,35 @@ newImages.forEach((imageTitleText, index) => {
 } */
 
 
-const allImages = document.querySelectorAll('#contenitore > img');
+const allImages = document.querySelectorAll('.card > img');
+const allTitles = document.querySelectorAll('.card > .card-img-overlay > h4');
+const allText = document.querySelectorAll('.card > .card-img-overlay > p');
+
 //displau the next image
 const previousButton = document.getElementById('button_up');
 previousButton.addEventListener('click' , function() {
 
-    console.log('precedente');
-    const currentSlide = allImages[marker];
-    currentSlide.classList.remove('active');    
+    console.log('arrowUP');
+
+    const currentImage = allImages[marker];
+    console.log(currentImage + '   84');
+    currentImage.classList.remove('active');
+
+    const currentTitle = allTitles[marker];
+    currentTitle.classList.remove('active');
+
+    const currentText = allText[marker];
+    currentText.classList.remove('active'); 
     marker --;
 
     if (marker < 0){
-        marker = album.length - 1;
+        marker = newImages.length - 1;
     }
 
+    const prevTitle = allTitles[marker];
+    prevTitle.classList.add('active');
+    const prevText = allText[marker];
+    prevText.classList.add('active');
     const prevImage = allImages[marker];
     prevImage.classList.add('active');
 })
@@ -93,12 +107,12 @@ previousButton.addEventListener('click' , function() {
 const nextButton = document.getElementById('button_down');
 nextButton.addEventListener('click' , function() {
 
-    console.log('seguente');    
+    console.log('arrowDOWN');    
     const currentSlide = allImages[marker];
     currentSlide.classList.remove('active');
 
     marker ++;
-    if(marker > album.length - 1){
+    if(marker > newImages.length - 1){
         marker = 0;
     }
 
